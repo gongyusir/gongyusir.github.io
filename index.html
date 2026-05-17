@@ -1,0 +1,1002 @@
+<html lang="zh-CN" class="dark"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eagle Highlight Section - Interactive Edition</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+    <style>
+      /* 隐藏滚动条 */
+      .scrollbar-hide::-webkit-scrollbar {
+        display: none;
+      }
+      .scrollbar-hide {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+      }
+      body {
+        font-family: 'Inter', sans-serif;
+        background-color: #050505;
+      }
+      /* 视差大背景渐变 */
+      .bg-radial-glow {
+        background: radial-gradient(circle at center, #0f121d 0%, #050505 100%);
+      }
+      /* 模拟流体过渡动画 */
+      .fluid-transition {
+        transition: all 0.5s cubic-bezier(0.2, 1, 0.2, 1);
+      }
+      /* 选项卡激活态文本高亮 */
+      .tab-active-text {
+        color: #ffffff !important;
+      }
+
+      /* Behance 风格图片缩放容器 */
+      .behance-img-container {
+        overflow: hidden;
+        position: relative;
+        background-color: #111;
+        display: block;
+      }
+      .behance-img-container img {
+        transition: transform 0.8s cubic-bezier(0.2, 1, 0.3, 1);
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      .behance-img-container:hover img { transform: scale(1.06); }
+
+      /* 比例控制 */
+      .aspect-1920-1080 { aspect-ratio: 1920 / 1080; }
+      .aspect-950-950 { aspect-ratio: 950 / 950; }
+      .aspect-1920-786 { aspect-ratio: 1920 / 786; }
+
+      /* 页面渐隐渐现效果 */
+      .page-transition {
+        transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+      }
+    </style>
+  </head>
+  <body class="text-zinc-200 antialiased min-h-screen flex flex-col selection:bg-blue-500/30 bg-radial-glow">
+    <!-- Header Navigation (Simplified Context) -->
+    <header class="w-full border-b border-white/5 bg-black/50 backdrop-blur-md sticky top-0 z-50 animate-fade-in">
+      <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+        <div class="flex items-center gap-2 cursor-pointer" onclick="navigateTo('home')">
+          <div class="w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center">
+            <i data-lucide="bird" class="text-white w-5 h-5" stroke-width="2"></i>
+          </div>
+          <span class="font-medium text-lg tracking-tight text-white">
+            eagle
+          </span>
+        </div>
+        <nav class="hidden md:flex items-center gap-8 text-sm text-zinc-400 font-medium">
+          <a href="javascript:void(0)" onclick="navigateTo('home')" id="nav-home" class="text-white transition-colors">
+            首页
+          </a>
+          <a href="javascript:void(0)" onclick="navigateTo('portfolio')" id="nav-portfolio" class="hover:text-zinc-200 transition-colors">
+            精选作品集
+          </a>
+          <a href="#" class="hover:text-zinc-200 transition-colors">
+            浏览器扩展
+          </a>
+          <a href="#" class="hover:text-zinc-200 transition-colors">博客</a>
+          <a href="#" class="hover:text-zinc-200 transition-colors flex items-center gap-1">
+            资源
+            <i data-lucide="chevron-down" class="w-3 h-3"></i>
+          </a>
+          <a href="#" class="hover:text-zinc-200 transition-colors">帮助中心</a>
+        </nav>
+        <button class="bg-blue-600 hover:bg-blue-500 text-white px-5 py-2 rounded-lg text-sm font-medium transition-colors">
+          立即购买
+        </button>
+      </div>
+    </header>
+
+    <!-- Main Hero Section -->
+    <div id="view-home" class="page-transition opacity-100 flex-1 flex flex-col items-center">
+      <main class="w-full overflow-hidden flex flex-col items-center pt-24 pb-32">
+        <div class="max-w-[1200px] w-full px-4 flex flex-col items-center">
+          <div class="scroll-anim opacity-0 translate-y-6 transition-all duration-700 ease-out flex items-center justify-center">
+            <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full border border-blue-500/30 bg-blue-500/10 text-blue-400 text-xs font-medium">
+              <span>Eagle 4 功能亮点</span>
+              <i data-lucide="chevron-right" class="w-3 h-3"></i>
+            </span>
+          </div>
+
+          <h1 class="scroll-anim opacity-0 translate-y-6 transition-all duration-700 ease-out mt-6 text-[40px] md:text-[56px] leading-[1.1] font-semibold tracking-tight text-white text-center max-w-3xl">
+            素材管理
+            <br>
+            从未如此简单
+          </h1>
+
+          <p class="scroll-anim opacity-0 translate-y-6 transition-all duration-700 ease-out mt-6 text-base md:text-lg text-zinc-400 text-center max-w-2xl leading-relaxed">
+            使用 Eagle
+            轻松收集及整理"案例、灵感、截图、图片、视频、音频、情绪板"等各种素材，激发更多创意灵感，让工作变得更有效率！
+          </p>
+
+          <div class="scroll-anim opacity-0 translate-y-6 transition-all duration-700 ease-out mt-10 flex flex-col items-center">
+            <div class="flex shadow-lg shadow-blue-500/10 rounded-xl overflow-hidden">
+              <button class="bg-[#2a3040] hover:bg-[#343b4d] text-white px-8 py-3.5 flex items-center gap-3 font-medium transition-colors border border-white/10 border-r-0 rounded-l-xl">
+                <i data-lucide="layout-grid" class="w-5 h-5 opacity-80" stroke-width="1.5"></i>
+                下载 Windows 版
+              </button>
+              <button class="bg-[#2a3040] hover:bg-[#343b4d] px-3 border border-white/10 border-l border-l-white/10 rounded-r-xl flex items-center justify-center text-zinc-400 hover:text-white transition-colors">
+                <i data-lucide="chevron-down" class="w-5 h-5" stroke-width="1.5"></i>
+              </button>
+            </div>
+            <div class="mt-4 flex items-center gap-2 text-xs text-zinc-500 font-medium tracking-wide">
+              <span>版本 4.0.0 Build23 (2026-04-01)</span>
+              <span class="w-0.5 h-3 bg-zinc-800 rounded-full"></span>
+              <span>支持 Windows 10+ 及以上</span>
+            </div>
+          </div>
+
+          <div class="scroll-anim opacity-0 translate-y-8 transition-all duration-1000 ease-out w-full mt-20 relative flex flex-col items-center group/system">
+            <div class="relative w-full max-w-[1024px] aspect-[16/10] md:aspect-[16/9] rounded-2xl bg-zinc-900 border border-white/10 shadow-2xl overflow-hidden">
+              <div class="absolute top-0 left-0 w-full h-10 bg-[#1e1e1e] border-b border-white/5 flex items-center justify-between px-4 z-10">
+                <div class="flex gap-2">
+                  <div class="w-3 h-3 rounded-full bg-[#ff5f56]"></div>
+                  <div class="w-3 h-3 rounded-full bg-[#ffbd2e]"></div>
+                  <div class="w-3 h-3 rounded-full bg-[#27c93f]"></div>
+                </div>
+                <div class="text-[11px] text-zinc-500 font-medium tracking-wide" id="simulation-window-title">
+                  全部素材.library
+                </div>
+                <div class="w-12"></div>
+              </div>
+
+              <div class="absolute inset-0 pt-10">
+                <img id="main-display" src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&amp;w=2564&amp;auto=format&amp;fit=crop" class="w-full h-full object-cover object-top fluid-transition opacity-100" alt="UI Screenshot">
+              </div>
+
+              <div class="absolute inset-0 pointer-events-none rounded-2xl shadow-[inset_0_0_0_1px_rgba(255,255,255,0.05)] z-20"></div>
+            </div>
+
+            <button id="btn-prev" class="absolute top-[40%] md:top-[45%] left-0 md:-left-12 -translate-y-1/2 w-12 h-12 rounded-full bg-zinc-800/80 hover:bg-zinc-700 text-zinc-400 hover:text-white flex items-center justify-center border border-white/10 shadow-lg backdrop-blur-sm transition-all duration-200 z-30 opacity-0 group-hover/system:opacity-100 translate-x-4 group-hover/system:translate-x-0">
+              <i data-lucide="chevron-left" class="w-6 h-6" stroke-width="1.5"></i>
+            </button>
+            <button id="btn-next" class="absolute top-[40%] md:top-[45%] right-0 md:-right-12 -translate-y-1/2 w-12 h-12 rounded-full bg-zinc-800/80 hover:bg-zinc-700 text-zinc-400 hover:text-white flex items-center justify-center border border-white/10 shadow-lg backdrop-blur-sm transition-all duration-200 z-30 opacity-0 group-hover/system:opacity-100 translate-x-4 group-hover/system:translate-x-0">
+              <i data-lucide="chevron-right" class="w-6 h-6" stroke-width="1.5"></i>
+            </button>
+
+            <div class="w-full max-w-[1024px] mt-8 relative">
+              <div class="absolute left-0 top-0 bottom-0 w-12 bg-gradient-to-r from-[#050505] to-transparent z-10 pointer-events-none"></div>
+              <div class="absolute right-0 top-0 bottom-0 w-12 bg-gradient-to-l from-[#050505] to-transparent z-10 pointer-events-none"></div>
+
+              <div id="thumbnail-container" class="flex gap-3 overflow-x-auto scrollbar-hide snap-x snap-mandatory px-4 py-2 scroll-smooth"></div>
+            </div>
+          </div>
+
+          <div class="scroll-anim opacity-0 translate-y-6 transition-all duration-1000 ease-out w-full max-w-5xl mt-32 border-t border-white/5 pt-12">
+            <div class="flex flex-wrap justify-center items-center gap-x-12 gap-y-8 md:gap-x-16">
+              <div class="flex items-center font-semibold text-xl md:text-2xl tracking-tighter opacity-40 hover:opacity-100 grayscale hover:grayscale-0 transition-all duration-300 cursor-default select-none">
+                Google
+              </div>
+              <div class="flex items-center gap-1.5 font-semibold text-lg md:text-xl opacity-40 hover:opacity-100 grayscale hover:grayscale-0 transition-all duration-300 cursor-default select-none">
+                <i data-lucide="layout-dashboard" class="w-6 h-6 text-[#00a4ef]"></i>
+                Microsoft
+              </div>
+              <div class="flex items-center font-semibold text-xl md:text-2xl tracking-tight opacity-40 hover:opacity-100 grayscale hover:grayscale-0 transition-all duration-300 cursor-default select-none italic">
+                Alibaba
+              </div>
+              <div class="flex items-center font-medium text-lg md:text-xl tracking-wide opacity-40 hover:opacity-100 grayscale hover:grayscale-0 transition-all duration-300 cursor-default select-none">
+                Tencent 腾讯
+              </div>
+              <div class="flex items-center font-semibold text-lg md:text-xl opacity-40 hover:opacity-100 grayscale hover:grayscale-0 transition-all duration-300 cursor-default select-none">
+                ByteDance
+              </div>
+              <div class="flex items-center font-bold text-lg md:text-xl opacity-40 hover:opacity-100 grayscale hover:grayscale-0 transition-all duration-300 cursor-default select-none">
+                网易 NETEASE
+              </div>
+            </div>
+          </div>
+
+          <div class="ai-scroll-anim opacity-0 translate-y-12 transition-all duration-1000 ease-out w-full max-w-[1024px] mt-32 relative flex flex-col md:flex-row gap-8 lg:gap-12 bg-[#0c0d12] border border-white/5 rounded-3xl p-6 md:p-10 overflow-hidden items-center shadow-2xl">
+            <div class="absolute top-0 right-0 w-[500px] h-[500px] bg-blue-500/10 rounded-full blur-[100px] pointer-events-none opacity-50 mix-blend-screen"></div>
+
+            <div class="ai-scroll-anim opacity-0 -translate-x-8 transition-all duration-1000 ease-out w-full md:w-[280px] flex-shrink-0 flex flex-col z-10">
+              <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-[#1e212b] to-[#0f1117] border border-white/10 flex items-center justify-center mb-6 shadow-inner relative overflow-hidden">
+                <div class="absolute inset-0 bg-gradient-to-tr from-blue-500/20 to-purple-500/20"></div>
+                <i data-lucide="sparkles" class="w-5 h-5 text-blue-400 relative z-10" stroke-width="2"></i>
+              </div>
+
+              <h2 class="text-2xl font-semibold text-white tracking-tight mb-3">
+                AI 搜索
+              </h2>
+              <p class="text-zinc-400 text-sm leading-relaxed mb-8">
+                按图片、按语义、按来源搜索素材，无需依赖文件名或标签，也能快速找到想要的内容。
+              </p>
+
+              <div class="relative flex flex-col gap-1 w-full" id="ai-tabs-container">
+                <div id="ai-tab-pill" class="absolute top-0 left-0 w-full h-11 bg-[#252a38] border border-blue-500/20 rounded-xl transition-transform duration-300 ease-[cubic-bezier(0.4,0,0.2,1)]" style="transform: translateY(0px);"></div>
+
+                <button class="ai-tab group relative z-10 flex items-center gap-3 w-full h-11 px-4 rounded-xl text-left" data-index="0">
+                  <div class="text-blue-400 transition-colors duration-300 tab-icon">
+                    <i data-lucide="camera" class="w-[18px] h-[18px]"></i>
+                  </div>
+                  <span class="text-white font-medium text-sm transition-colors duration-300 tab-text">
+                    以图找图
+                  </span>
+                </button>
+
+                <button class="ai-tab group relative z-10 flex items-center gap-3 w-full h-11 px-4 rounded-xl text-left" data-index="1">
+                  <div class="text-zinc-500 group-hover:text-zinc-400 transition-colors duration-300 tab-icon">
+                    <i data-lucide="scan-text" class="w-[18px] h-[18px]"></i>
+                  </div>
+                  <span class="text-zinc-400 group-hover:text-zinc-300 font-medium text-sm transition-colors duration-300 tab-text">
+                    语义搜索
+                  </span>
+                </button>
+
+                <button class="ai-tab group relative z-10 flex items-center gap-3 w-full h-11 px-4 rounded-xl text-left" data-index="2">
+                  <div class="text-zinc-500 group-hover:text-zinc-400 transition-colors duration-300 tab-icon">
+                    <i data-lucide="layout-dashboard" class="w-[18px] h-[18px]"></i>
+                  </div>
+                  <span class="text-zinc-400 group-hover:text-zinc-300 font-medium text-sm transition-colors duration-300 tab-text">
+                    跨平台搜索
+                  </span>
+                </button>
+              </div>
+
+              <button id="ai-action-btn" class="mt-8 w-full py-2.5 rounded-full border border-blue-500/30 hover:border-blue-500/50 bg-blue-500/10 hover:bg-blue-500/20 text-blue-400 text-sm font-medium transition-all duration-300 flex items-center justify-center gap-2">
+                <i data-lucide="external-link" class="w-4 h-4 animate-pulse"></i>
+                <span>重新搜索匹配 (进入二级作品集)</span>
+              </button>
+            </div>
+
+            <div class="ai-scroll-anim opacity-0 translate-y-8 md:translate-y-0 md:translate-x-8 transition-all duration-1000 ease-out flex-1 w-full relative z-10">
+              <div class="bg-[#181a24] border border-white/5 rounded-2xl shadow-2xl overflow-hidden flex flex-col h-[480px]">
+                <div class="h-12 border-b border-white/5 flex items-center px-4 gap-4 bg-[#1f222e]/90 backdrop-blur-md z-20">
+                  <div class="flex gap-2">
+                    <i data-lucide="chevron-left" class="w-4 h-4 text-zinc-600"></i>
+                    <i data-lucide="chevron-right" class="w-4 h-4 text-zinc-600"></i>
+                  </div>
+                  <div class="w-24 h-1.5 bg-zinc-800 rounded-full flex overflow-hidden">
+                    <div class="w-2/3 bg-blue-500/50 rounded-full"></div>
+                  </div>
+                  <span class="text-[11px] text-zinc-500 font-medium" id="ai-result-count">
+                    (24)
+                  </span>
+                  <div class="ml-auto flex items-center gap-2">
+                    <div class="flex items-center gap-2 bg-[#2a2e3d] px-2.5 py-1.5 rounded-lg border border-white/5">
+                      <div class="w-4 h-4 rounded-[4px] bg-gradient-to-b from-blue-400 to-blue-600 flex items-center justify-center shadow-sm">
+                        <i data-lucide="image" class="w-2.5 h-2.5 text-white"></i>
+                      </div>
+                      <span id="ai-top-bar-text" class="text-[11px] text-zinc-200 font-medium">
+                        以图找图
+                      </span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="flex-1 overflow-y-auto p-4 relative scrollbar-hide bg-[#12131a]">
+                  <div id="ai-loading" class="absolute inset-0 z-10 flex flex-col items-center justify-center bg-[#12131a]/95 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity duration-300">
+                    <i data-lucide="loader-circle" class="w-8 h-8 text-blue-500 animate-spin mb-4"></i>
+                    <span class="text-xs font-medium text-zinc-300 tracking-wide bg-[#1f222e] px-4 py-2 rounded-full border border-white/5 shadow-xl">
+                      正在通过 AI 匹配图像...
+                    </span>
+                  </div>
+                  <div class="columns-2 sm:columns-3 gap-3 space-y-3 pb-4" id="ai-gallery"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="ai-scroll-anim opacity-0 translate-y-12 transition-all duration-1000 ease-out w-full max-w-[1024px] mt-20 relative flex flex-col md:flex-row-reverse gap-8 lg:gap-12 bg-[#0c0d12] border border-white/5 rounded-3xl p-6 md:p-10 overflow-hidden items-center shadow-2xl">
+            <div class="absolute top-0 left-0 w-[500px] h-[500px] bg-purple-500/10 rounded-full blur-[100px] pointer-events-none opacity-50 mix-blend-screen"></div>
+
+            <div class="ai-scroll-anim opacity-0 translate-x-8 transition-all duration-1000 ease-out w-full md:w-[280px] flex-shrink-0 flex flex-col z-10">
+              <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-[#1e212b] to-[#0f1117] border border-white/10 flex items-center justify-center mb-6 shadow-inner relative overflow-hidden">
+                <div class="absolute inset-0 bg-gradient-to-tr from-purple-500/20 to-pink-500/20"></div>
+                <i data-lucide="tags" class="w-5 h-5 text-purple-400 relative z-10" stroke-width="2"></i>
+              </div>
+              <h2 class="text-2xl font-semibold text-white tracking-tight mb-3">
+                智能标签
+              </h2>
+              <p class="text-zinc-400 text-sm leading-relaxed mb-8">
+                自动识别图片内容并添加精准标签，告别手动输入的繁琐，管理素材更轻松。
+              </p>
+              <div class="relative flex flex-col gap-1 w-full" id="tag-tabs-container">
+                <div id="tag-tab-pill" class="absolute top-0 left-0 w-full h-11 bg-[#252a38] border border-purple-500/20 rounded-xl transition-transform duration-300 ease-[cubic-bezier(0.4,0,0.2,1)]" style="transform: translateY(0px);"></div>
+                <button class="tag-tab group relative z-10 flex items-center gap-3 w-full h-11 px-4 rounded-xl text-left" data-index="0">
+                  <div class="text-purple-400 transition-colors duration-300 tag-icon">
+                    <i data-lucide="zap" class="w-[18px] h-[18px]"></i>
+                  </div>
+                  <span class="text-white font-medium text-sm transition-colors duration-300 tag-text">
+                    自动打标签
+                  </span>
+                </button>
+                <button class="tag-tab group relative z-10 flex items-center gap-3 w-full h-11 px-4 rounded-xl text-left" data-index="1">
+                  <div class="text-zinc-500 group-hover:text-zinc-400 transition-colors duration-300 tag-icon">
+                    <i data-lucide="layers" class="w-[18px] h-[18px]"></i>
+                  </div>
+                  <span class="text-zinc-400 group-hover:text-zinc-300 font-medium text-sm transition-colors duration-300 tag-text">
+                    批量处理
+                  </span>
+                </button>
+                <button class="tag-tab group relative z-10 flex items-center gap-3 w-full h-11 px-4 rounded-xl text-left" data-index="2">
+                  <div class="text-zinc-500 transition-colors duration-300 tag-icon">
+                    <i data-lucide="settings" class="w-[18px] h-[18px]"></i>
+                  </div>
+                  <span class="text-zinc-400 group-hover:text-zinc-300 font-medium text-sm transition-colors duration-300 tag-text">
+                    自定义规则
+                  </span>
+                </button>
+              </div>
+              <button id="tag-action-btn" class="mt-8 w-full py-2.5 rounded-full border border-purple-500/30 hover:border-purple-500/50 bg-purple-500/10 hover:bg-purple-500/20 text-purple-400 text-sm font-medium transition-all duration-300 flex items-center justify-center gap-2">
+                <i data-lucide="brain" class="w-4 h-4"></i>
+                <span>运行智能分析</span>
+              </button>
+            </div>
+
+            <div class="ai-scroll-anim opacity-0 translate-y-8 md:translate-y-0 md:-translate-x-8 transition-all duration-1000 ease-out flex-1 w-full relative z-10">
+              <div class="bg-[#181a24] border border-white/5 rounded-2xl shadow-2xl overflow-hidden flex flex-col h-[480px]">
+                <div class="h-12 border-b border-white/5 flex items-center px-4 gap-4 bg-[#1f222e]/90 backdrop-blur-md z-20">
+                  <div class="flex gap-2">
+                    <i data-lucide="chevron-left" class="w-4 h-4 text-zinc-600"></i>
+                    <i data-lucide="chevron-right" class="w-4 h-4 text-zinc-600"></i>
+                  </div>
+                  <div class="w-24 h-1.5 bg-zinc-800 rounded-full flex overflow-hidden">
+                    <div class="w-1/2 bg-purple-500/50 rounded-full"></div>
+                  </div>
+                  <span class="text-[11px] text-zinc-500 font-medium">
+                    (15)
+                  </span>
+                  <div class="ml-auto flex items-center gap-2">
+                    <div class="flex items-center gap-2 bg-[#2a2e3d] px-2.5 py-1.5 rounded-lg border border-white/5">
+                      <div class="w-4 h-4 rounded-[4px] bg-gradient-to-b from-purple-400 to-purple-600 flex items-center justify-center shadow-sm">
+                        <i data-lucide="tag" class="w-2.5 h-2.5 text-white"></i>
+                      </div>
+                      <span class="text-[11px] text-zinc-200 font-medium">
+                        自动打标签
+                      </span>
+                    </div>
+                  </div>
+                </div>
+                <div class="flex-1 overflow-y-auto p-4 scrollbar-hide bg-[#12131a] relative">
+                  <div id="tag-loading" class="absolute inset-0 z-10 flex flex-col items-center justify-center bg-[#12131a]/95 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity duration-300">
+                    <i data-lucide="cpu" class="w-8 h-8 text-purple-500 animate-pulse mb-4"></i>
+                    <span class="text-xs font-medium text-zinc-300 tracking-wide bg-[#1f222e] px-4 py-2 rounded-full border border-white/5 shadow-xl">
+                      深度神经元分析中...
+                    </span>
+                  </div>
+                  <div class="columns-2 sm:columns-3 gap-3 space-y-3 pb-4" id="tag-gallery"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="ai-scroll-anim opacity-0 translate-y-12 transition-all duration-1000 ease-out w-full max-w-[1024px] mt-20 relative flex flex-col md:flex-row gap-8 lg:gap-12 bg-[#0c0d12] border border-white/5 rounded-3xl p-6 md:p-10 overflow-hidden items-center shadow-2xl mb-20">
+            <div class="absolute top-0 right-0 w-[500px] h-[500px] bg-emerald-500/10 rounded-full blur-[100px] pointer-events-none opacity-50 mix-blend-screen"></div>
+
+            <div class="ai-scroll-anim opacity-0 -translate-x-8 transition-all duration-1000 ease-out w-full md:w-[280px] flex-shrink-0 flex flex-col z-10">
+              <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-[#1e212b] to-[#0f1117] border border-white/10 flex items-center justify-center mb-6 shadow-inner relative overflow-hidden">
+                <div class="absolute inset-0 bg-gradient-to-tr from-emerald-500/20 to-teal-500/20"></div>
+                <i data-lucide="folder-tree" class="w-5 h-5 text-emerald-400 relative z-10" stroke-width="2"></i>
+              </div>
+              <h2 class="text-2xl font-semibold text-white tracking-tight mb-3">
+                分类管理
+              </h2>
+              <p class="text-zinc-400 text-sm leading-relaxed mb-8">
+                依托智能文件夹、多级树状标签与层级分类系统，轻松驾驭成千上万个设计素材。
+              </p>
+              <div class="relative flex flex-col gap-1 w-full" id="folder-tabs-container">
+                <div id="folder-tab-pill" class="absolute top-0 left-0 w-full h-11 bg-[#252a38] border border-emerald-500/20 rounded-xl transition-transform duration-300 ease-[cubic-bezier(0.4,0,0.2,1)]" style="transform: translateY(0px);"></div>
+                <button class="folder-tab group relative z-10 flex items-center gap-3 w-full h-11 px-4 rounded-xl text-left" data-index="0">
+                  <div class="text-emerald-400 transition-colors duration-300 folder-icon">
+                    <i data-lucide="smart-folder" class="w-[18px] h-[18px]"></i>
+                  </div>
+                  <span class="text-white font-medium text-sm transition-colors duration-300 folder-text">
+                    智能文件夹
+                  </span>
+                </button>
+                <button class="folder-tab group relative z-10 flex items-center gap-3 w-full h-11 px-4 rounded-xl text-left" data-index="1">
+                  <div class="text-zinc-500 group-hover:text-zinc-400 transition-colors duration-300 folder-icon">
+                    <i data-lucide="tags" class="w-[18px] h-[18px]"></i>
+                  </div>
+                  <span class="text-zinc-400 group-hover:text-zinc-300 font-medium text-sm transition-colors duration-300 folder-text">
+                    层级分类标签
+                  </span>
+                </button>
+                <button class="folder-tab group relative z-10 flex items-center gap-3 w-full h-11 px-4 rounded-xl text-left" data-index="2">
+                  <div class="text-zinc-500 group-hover:text-zinc-400 transition-colors duration-300 folder-icon">
+                    <i data-lucide="git-branch" class="w-[18px] h-[18px]"></i>
+                  </div>
+                  <span class="text-zinc-400 group-hover:text-zinc-300 font-medium text-sm transition-colors duration-300 folder-text">
+                    多维度整理
+                  </span>
+                </button>
+              </div>
+              <button id="folder-action-btn" class="mt-8 w-full py-2.5 rounded-full border border-emerald-500/30 hover:border-emerald-500/50 bg-emerald-500/10 hover:bg-emerald-500/20 text-emerald-400 text-sm font-medium transition-all duration-300 flex items-center justify-center gap-2">
+                <i data-lucide="folder-plus" class="w-4 h-4"></i>
+                <span>创建智能分类</span>
+              </button>
+            </div>
+
+            <div class="ai-scroll-anim opacity-0 translate-y-8 md:translate-y-0 md:translate-x-8 transition-all duration-1000 ease-out flex-1 w-full relative z-10">
+              <div class="bg-[#181a24] border border-white/5 rounded-2xl shadow-2xl overflow-hidden flex flex-col h-[480px]">
+                <div class="h-12 border-b border-white/5 flex items-center px-4 gap-4 bg-[#1f222e]/90 backdrop-blur-md z-20">
+                  <div class="flex gap-2">
+                    <i data-lucide="chevron-left" class="w-4 h-4 text-zinc-600"></i>
+                    <i data-lucide="chevron-right" class="w-4 h-4 text-zinc-600"></i>
+                  </div>
+                  <div class="w-24 h-1.5 bg-zinc-800 rounded-full flex overflow-hidden">
+                    <div class="w-2/3 bg-emerald-500/50 rounded-full"></div>
+                  </div>
+                  <span class="text-[11px] text-zinc-500 font-medium">
+                    导航器
+                  </span>
+                  <div class="ml-auto flex items-center gap-2">
+                    <div class="flex items-center gap-2 bg-[#2a2e3d] px-2.5 py-1.5 rounded-lg border border-white/5">
+                      <div class="w-4 h-4 rounded-[4px] bg-gradient-to-b from-emerald-400 to-emerald-600 flex items-center justify-center shadow-sm">
+                        <i data-lucide="folder" class="w-2.5 h-2.5 text-white"></i>
+                      </div>
+                      <span class="text-[11px] text-emerald-200 font-medium" id="folder-top-bar-text">
+                        智能文件夹
+                      </span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="flex-grow flex bg-[#12131a] overflow-hidden">
+                  <div class="w-[240px] border-r border-white/5 p-4 overflow-y-auto scrollbar-hide flex flex-col gap-1 text-sm text-zinc-400" id="folder-tree-container"></div>
+                  <div class="flex-1 p-6 overflow-y-auto scrollbar-hide flex flex-col justify-center items-center text-center relative" id="folder-detail-panel">
+                    <div class="w-16 h-16 rounded-2xl bg-[#1f222e] flex items-center justify-center mb-4 border border-white/10 text-emerald-400 shadow-xl" id="detail-icon-box">
+                      <i data-lucide="folder-open" class="w-8 h-8"></i>
+                    </div>
+                    <h4 class="text-white font-semibold text-base mb-1" id="detail-folder-name">
+                      Figma UI 组件库
+                    </h4>
+                    <p class="text-xs text-zinc-500 max-w-[200px]" id="detail-folder-desc">
+                      匹配规则：格式为 .fig 且标签包含 "UI" 的本地素材
+                    </p>
+                    <div class="mt-6 flex gap-2 justify-center" id="detail-previews"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+    <div id="view-portfolio" class="page-transition opacity-0 hidden flex-1 flex-col items-center py-20 px-4 md:px-0">
+      <div class="max-w-[1200px] w-full mx-auto px-4 md:px-6">
+        <div class="flex items-center gap-2 text-sm text-zinc-500 mb-12">
+          <span class="hover:text-white cursor-pointer transition-colors" onclick="navigateTo('home')">
+            首页
+          </span>
+          <i data-lucide="chevron-right" class="w-4 h-4"></i>
+          <span class="text-blue-500 font-medium">GWM POER P500 创意解析</span>
+        </div>
+
+        <div class="text-center mb-16">
+          <h2 class="text-4xl md:text-5xl font-bold tracking-tight text-white mb-4">
+            GWM POER P500 视觉全案
+          </h2>
+          <p class="text-zinc-400 text-base max-w-xl mx-auto leading-relaxed">
+            基于 Behance 豪华宽幅排版，呈现电影级巨幕叙事与汽车工业美学细节。
+          </p>
+        </div>
+
+        <a href="https://www.behance.net/gallery/247335455/GWM-Poer-P500" target="_blank" class="relative w-full aspect-1920-1080 group overflow-hidden block rounded-3xl border border-white/5 shadow-2xl mb-12">
+          <div id="video-poster" class="absolute inset-0 w-full h-full bg-cover bg-center transition-transform duration-1000 group-hover:scale-105" style="background-image: url('https://images.unsplash.com/photo-1617788138017-80ad40651399?auto=format&amp;fit=crop&amp;q=80&amp;w=1920');">
+            <div class="absolute inset-0 bg-black/30 group-hover:bg-black/15 transition-colors flex items-center justify-center">
+              <div class="w-24 h-24 flex items-center justify-center rounded-full bg-white/90 text-black shadow-2xl transform transition-all duration-300 group-hover:scale-110 group-hover:bg-white">
+                <svg class="w-10 h-10 fill-current ml-1" viewBox="0 0 24 24">
+                  <path d="M8 5v14l11-7z"></path>
+                </svg>
+              </div>
+            </div>
+            <div class="absolute bottom-10 left-10 text-left">
+              <p class="text-sm tracking-widest uppercase opacity-60 mb-2">
+                Cinematic Showcase
+              </p>
+              <h2 class="text-4xl font-bold tracking-tighter text-white">
+                GWM POER P500
+              </h2>
+            </div>
+          </div>
+        </a>
+
+        <div class="grid grid-cols-2 gap-6 mb-12">
+          <a href="https://www.behance.net/gallery/247335455/GWM-Poer-P500" target="_blank" class="behance-img-container aspect-950-950 rounded-2xl border border-white/5">
+            <img src="https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?auto=format&amp;fit=crop&amp;q=80&amp;w=950" alt="Detail 1">
+          </a>
+          <a href="https://www.behance.net/gallery/247335455/GWM-Poer-P500" target="_blank" class="behance-img-container aspect-950-950 rounded-2xl border border-white/5">
+            <img src="https://images.unsplash.com/photo-1563720223185-11003d516935?auto=format&amp;fit=crop&amp;q=80&amp;w=950" alt="Detail 2">
+          </a>
+          <a href="https://www.behance.net/gallery/247335455/GWM-Poer-P500" target="_blank" class="behance-img-container aspect-950-950 rounded-2xl border border-white/5">
+            <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&amp;fit=crop&amp;q=80&amp;w=950" alt="Detail 3">
+          </a>
+          <a href="https://www.behance.net/gallery/247335455/GWM-Poer-P500" target="_blank" class="behance-img-container aspect-950-950 rounded-2xl border border-white/5">
+            <img src="https://images.unsplash.com/photo-1552519507-da3b142c6e3d?auto=format&amp;fit=crop&amp;q=80&amp;w=950" alt="Detail 4">
+          </a>
+        </div>
+
+        <div class="w-full space-y-6">
+          <a href="https://www.behance.net/gallery/247335455/GWM-Poer-P500" target="_blank" class="behance-img-container aspect-1920-786 rounded-2xl border border-white/5">
+            <img src="https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&amp;fit=crop&amp;q=80&amp;w=1920" alt="Full Width 1">
+          </a>
+          <a href="https://www.behance.net/gallery/247335455/GWM-Poer-P500" target="_blank" class="behance-img-container aspect-1920-786 bg-zinc-900 rounded-2xl border border-white/5 flex items-center justify-center overflow-hidden">
+            <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExM3Z6N29kam95Z2p4bTA5OHg0cnY0ZzF3b3NtcjV5cmRndnZ3Y2ZiOSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/26AOTvYV077f5Xm4E/giphy.gif" class="w-full h-full object-cover" alt="Dynamic Animation">
+            <div class="absolute top-6 right-6 bg-black/60 backdrop-blur px-3 py-1 rounded text-[10px] tracking-widest uppercase border border-white/10 text-emerald-400">
+              Motion Study
+            </div>
+          </a>
+          <a href="https://www.behance.net/gallery/247335455/GWM-Poer-P500" target="_blank" class="behance-img-container aspect-1920-786 rounded-2xl border border-white/5">
+            <img src="https://images.unsplash.com/photo-1542282088-72c9c27ed0cd?auto=format&amp;fit=crop&amp;q=80&amp;w=1920" alt="Full Width 2">
+          </a>
+          <a href="https://www.behance.net/gallery/247335455/GWM-Poer-P500" target="_blank" class="behance-img-container aspect-1920-786 rounded-2xl border border-white/5">
+            <img src="https://images.unsplash.com/photo-1553440569-bcc63803a83d?auto=format&amp;fit=crop&amp;q=80&amp;w=1920" alt="Full Width 3">
+          </a>
+          <a href="https://www.behance.net/gallery/247335455/GWM-Poer-P500" target="_blank" class="behance-img-container aspect-1920-786 rounded-2xl border border-white/5">
+            <img src="https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?auto=format&amp;fit=crop&amp;q=80&amp;w=1920" alt="Full Width 4">
+          </a>
+        </div>
+
+        <div class="flex justify-center mt-16">
+          <button onclick="navigateTo('home')" class="px-8 py-3.5 bg-[#252a38] hover:bg-[#32394c] border border-white/10 rounded-full text-sm font-medium transition-all duration-300 flex items-center gap-2 hover:scale-105">
+            <i data-lucide="arrow-left" class="w-4 h-4"></i>
+            <span>返回 Eagle 首页</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <footer class="w-full border-t border-white/5 bg-black/80 py-8 text-center text-xs text-zinc-600 mt-auto">
+      <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-4">
+        <p>
+          © 2026 Eagle Landing Highlight Section. Fully Rebuilt with Complete
+          Interactions.
+        </p>
+        <p class="text-blue-500 font-medium cursor-pointer hover:underline" onclick="navigateTo('home')">
+          返回主页
+        </p>
+      </div>
+    </footer>
+    <script>
+      // --- 0. 极简流体 SPA 页面路由系统 ---
+      function navigateTo(viewId) {
+        const homeView = document.getElementById("view-home");
+        const portfolioView = document.getElementById("view-portfolio");
+        const navHome = document.getElementById("nav-home");
+        const navPortfolio = document.getElementById("nav-portfolio");
+
+        if (viewId === 'home') {
+          portfolioView.classList.add("opacity-0");
+          setTimeout(() => {
+            portfolioView.classList.add("hidden");
+            homeView.classList.remove("hidden");
+            setTimeout(() => {
+              homeView.classList.remove("opacity-0");
+              homeView.classList.add("opacity-100");
+              window.scrollTo({ top: 0, behavior: 'smooth' });
+            }, 50);
+          }, 400);
+
+          navHome.className = "text-white transition-colors";
+          navPortfolio.className = "hover:text-zinc-200 transition-colors text-zinc-400";
+        } else if (viewId === 'portfolio') {
+          homeView.classList.add("opacity-0");
+          setTimeout(() => {
+            homeView.classList.add("hidden");
+            portfolioView.classList.remove("hidden");
+            setTimeout(() => {
+              portfolioView.classList.remove("opacity-0");
+              portfolioView.classList.add("opacity-100");
+              window.scrollTo({ top: 0, behavior: 'smooth' });
+            }, 50);
+          }, 400);
+
+          navPortfolio.className = "text-white transition-colors";
+          navHome.className = "hover:text-zinc-200 transition-colors text-zinc-400";
+        }
+      }
+
+      document.addEventListener("DOMContentLoaded", () => {
+        lucide.createIcons();
+
+        const scrollObserver = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.remove("opacity-0", "translate-y-6", "translate-y-8", "translate-y-12", "-translate-x-8", "translate-x-8");
+              entry.target.classList.add("opacity-100", "translate-y-0", "translate-x-0");
+              scrollObserver.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll(".scroll-anim, .ai-scroll-anim").forEach((el) => {
+          scrollObserver.observe(el);
+        });
+
+        const sliderData = [
+          { id: 0, title: "灵感采集", desc: "全部素材", img: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=1200" },
+          { id: 1, title: "AI 咒语", desc: "案例分析", img: "https://images.unsplash.com/photo-1550745165-9bc0b252726f?q=80&w=1200" },
+          { id: 2, title: "插画灵感", desc: "插图素材", img: "https://images.unsplash.com/photo-1561070791-2526d30994b5?q=80&w=1200" },
+          { id: 3, title: "摄影图库", desc: "大自然景观", img: "https://images.unsplash.com/photo-1542282088-72c9c27ed0cd?q=80&w=1200" },
+          { id: 4, title: "室内设计", desc: "北欧风格", img: "https://images.unsplash.com/photo-1581291518062-c13f2773b640?q=80&w=1200" },
+          { id: 5, title: "游戏概念", desc: "次世代模型", img: "https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=1200" },
+          { id: 6, title: "UI 设计", desc: "Figma 组件库", img: "https://images.unsplash.com/photo-1614850523296-d8c1af93d400?q=80&w=1200" },
+          { id: 7, title: "动画视频", desc: "电影分镜", img: "https://images.unsplash.com/photo-1558655146-d09347e92766?q=80&w=1200" },
+          { id: 8, title: "设计素材", desc: "包装盒样机", img: "https://images.unsplash.com/photo-1550439062-609e1531270e?q=80&w=1200" }
+        ];
+
+        let currentSliderIndex = 0;
+        const mainDisplay = document.getElementById("main-display");
+        const simWindowTitle = document.getElementById("simulation-window-title");
+        const thumbContainer = document.getElementById("thumbnail-container");
+
+        function buildThumbnails() {
+          thumbContainer.innerHTML = sliderData.map((item, idx) => `
+            <div
+              class="thumb-card snap-center shrink-0 w-[140px] md:w-[160px] p-3 rounded-xl border border-white/5 bg-[#12131a] hover:bg-[#181a24] transition-all duration-300 cursor-pointer flex flex-col gap-2 group"
+              data-index="${idx}"
+            >
+              <div class="aspect-video rounded-lg overflow-hidden bg-zinc-800 border border-white/5 relative">
+                <img src="${item.img}" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
+                <div class="absolute inset-0 bg-black/10 group-hover:bg-black/0 transition-colors"></div>
+              </div>
+              <div class="flex flex-col">
+                <span class="text-xs font-semibold text-white group-hover:text-blue-400 transition-colors">${item.title}</span>
+                <span class="text-[10px] text-zinc-500 mt-0.5">${item.desc}</span>
+              </div>
+            </div>
+          `).join('');
+
+          document.querySelectorAll(".thumb-card").forEach((card) => {
+            card.addEventListener("click", (e) => {
+              const idx = parseInt(card.getAttribute("data-index"));
+              switchToSlide(idx);
+            });
+          });
+        }
+
+        function switchToSlide(idx) {
+          if (idx < 0 || idx >= sliderData.length) return;
+          currentSliderIndex = idx;
+
+          mainDisplay.classList.add("opacity-0");
+          setTimeout(() => {
+            mainDisplay.src = sliderData[idx].img;
+            simWindowTitle.textContent = `${sliderData[idx].title}.library`;
+            mainDisplay.classList.remove("opacity-0");
+          }, 200);
+
+          document.querySelectorAll(".thumb-card").forEach((card, cardIdx) => {
+            if (cardIdx === idx) {
+              card.classList.remove("border-white/5", "bg-[#12131a]");
+              card.classList.add("border-blue-500/40", "bg-[#1e2230]", "scale-105");
+              card.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+            } else {
+              card.classList.remove("border-blue-500/40", "bg-[#1e2230]", "scale-105");
+              card.classList.add("border-white/5", "bg-[#12131a]");
+            }
+          });
+        }
+
+        document.getElementById("btn-prev").addEventListener("click", () => {
+          let prevIdx = currentSliderIndex - 1;
+          if (prevIdx < 0) prevIdx = sliderData.length - 1;
+          switchToSlide(prevIdx);
+        });
+        document.getElementById("btn-next").addEventListener("click", () => {
+          let nextIdx = (currentSliderIndex + 1) % sliderData.length;
+          switchToSlide(nextIdx);
+        });
+
+        buildThumbnails();
+        switchToSlide(0);
+
+        const aiSearchData = {
+          0: {
+            title: "以图找图",
+            count: "(29)",
+            loadingMsg: "正在通过 深度神经元 匹配图像特征...",
+            images: [
+              "https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?q=80&w=400&auto=format",
+              "https://images.unsplash.com/photo-1533738363-b7f9aef128ce?q=80&w=400&auto=format",
+              "https://images.unsplash.com/photo-1573865526739-10659fec78a5?q=80&w=400&auto=format",
+              "https://images.unsplash.com/photo-1495360010541-f48722b34f7d?q=80&w=400&auto=format"
+            ],
+            tags: ["Cat", "Cute", "Animal"]
+          },
+          1: {
+            title: "语义搜索",
+            count: "(14)",
+            loadingMsg: "正在通过 NLP 自然语言识别匹配语义...",
+            images: [
+              "https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=400&auto=format",
+              "https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?q=80&w=400&auto=format",
+              "https://images.unsplash.com/photo-1447752875215-b2761acb3c5d?q=80&w=400&auto=format"
+            ],
+            tags: ["Valley", "Mist", "Nature"]
+          },
+          2: {
+            title: "跨平台搜索",
+            count: "(38)",
+            loadingMsg: "正在并发检索本地、Figma和网盘数据库...",
+            images: [
+              "https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?q=80&w=400&auto=format",
+              "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=400&auto=format",
+              "https://images.unsplash.com/photo-1581291518062-c13f2773b640?q=80&w=400&auto=format",
+              "https://images.unsplash.com/photo-1561070791-2526d30994b5?q=80&w=400&auto=format"
+            ],
+            tags: ["Vector", "Mockup", "Integration"]
+          }
+        };
+
+        const aiTabs = document.querySelectorAll(".ai-tab");
+        const aiTabPill = document.getElementById("ai-tab-pill");
+        const aiLoading = document.getElementById("ai-loading");
+        const aiLoadingText = document.getElementById("ai-loading-text");
+        const aiGallery = document.getElementById("ai-gallery");
+        const aiTopBarText = document.getElementById("ai-top-bar-text");
+        const aiResultCount = document.getElementById("ai-result-count");
+
+        function switchAiSearch(index) {
+          aiTabPill.style.transform = `translateY(${index * 48}px)`;
+
+          aiTabs.forEach((btn, idx) => {
+            const icon = btn.querySelector(".tab-icon");
+            const text = btn.querySelector(".tab-text");
+            if (idx === index) {
+              icon.classList.remove("text-zinc-500", "group-hover:text-zinc-400");
+              icon.classList.add("text-blue-400");
+              text.classList.remove("text-zinc-400", "group-hover:text-zinc-300");
+              text.classList.add("text-white", "font-semibold");
+            } else {
+              icon.classList.remove("text-blue-400");
+              icon.classList.add("text-zinc-500", "group-hover:text-zinc-400");
+              text.classList.remove("text-white", "font-semibold");
+              text.classList.add("text-zinc-400", "group-hover:text-zinc-300");
+            }
+          });
+
+          aiLoadingText.textContent = aiSearchData[index].loadingMsg;
+          aiLoading.classList.remove("opacity-0", "pointer-events-none");
+
+          setTimeout(() => {
+            aiTopBarText.textContent = aiSearchData[index].title;
+            aiResultCount.textContent = aiSearchData[index].count;
+
+            aiGallery.innerHTML = aiSearchData[index].images.map((imgUrl) => `
+              <div class="relative rounded-xl overflow-hidden group/item mb-3 shadow-md bg-[#1f222e]">
+                <img src="${imgUrl}" class="w-full h-auto object-cover" alt="Result" />
+                <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover/item:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-3 pointer-events-none">
+                  <div class="flex flex-wrap gap-1">
+                    ${aiSearchData[index].tags.map(t => `
+                      <span class="bg-blue-500/90 text-white text-[10px] font-medium px-1.5 py-0.5 rounded backdrop-blur-md shadow-sm border border-white/10">${t}</span>
+                    `).join('')}
+                  </div>
+                </div>
+              </div>
+            `).join('');
+
+            aiLoading.classList.add("opacity-0", "pointer-events-none");
+          }, 600);
+        }
+
+        aiTabs.forEach((btn) => {
+          btn.addEventListener("click", () => {
+            const idx = parseInt(btn.getAttribute("data-index"));
+            switchAiSearch(idx);
+          });
+        });
+
+        document.getElementById("ai-action-btn").addEventListener("click", (e) => {
+          e.preventDefault();
+          navigateTo('portfolio');
+        });
+
+        switchAiSearch(0);
+
+        const tagData = {
+          0: {
+            loadingMsg: "正在利用图像识别提取标签...",
+            images: [
+              { url: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&amp;w=400&amp;auto=format", tags: ["UI", "Dark", "Minimal"] },
+              { url: "https://images.unsplash.com/photo-1550745165-9bc0b252726f?q=80&amp;w=400&amp;auto=format", tags: ["Retro", "Game", "Hardware"] },
+              { url: "https://images.unsplash.com/photo-1561070791-2526d30994b5?q=80&amp;w=400&amp;auto=format", tags: ["Design", "Fluid", "Color"] }
+            ]
+          },
+          1: {
+            loadingMsg: "准备应用批量标签规则...",
+            images: [
+              { url: "https://images.unsplash.com/photo-1542282088-72c9c27ed0cd?q=80&amp;w=400&amp;auto=format", tags: ["Batch", "Wallpapers", "HD"] },
+              { url: "https://images.unsplash.com/photo-1581291518062-c13f2773b640?q=80&amp;w=400&amp;auto=format", tags: ["Batch", "UI", "Elements"] },
+              { url: "https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&amp;w=400&amp;auto=format", tags: ["Batch", "Games", "3D"] }
+            ]
+          },
+          2: {
+            loadingMsg: "执行高级筛选和自定命名结构...",
+            images: [
+              { url: "https://images.unsplash.com/photo-1614850523296-d8c1af93d400?q=80&amp;w=400&amp;auto=format", tags: ["Rule-Icon", "Figma", "Design-System"] },
+              { url: "https://images.unsplash.com/photo-1558655146-d09347e92766?q=80&amp;w=400&amp;auto=format", tags: ["Rule-Sketch", "Layout", "Wireframe"] }
+            ]
+          }
+        };
+
+        const tagTabs = document.querySelectorAll(".tag-tab");
+        const tagTabPill = document.getElementById("tag-tab-pill");
+        const tagLoading = document.getElementById("tag-loading");
+        const tagLoadingText = document.getElementById("tag-loading-text");
+        const tagGallery = document.getElementById("tag-gallery");
+
+        function switchTagSystem(index) {
+          tagTabPill.style.transform = `translateY(${index * 48}px)`;
+
+          tagTabs.forEach((btn, idx) => {
+            const icon = btn.querySelector(".tag-icon");
+            const text = btn.querySelector(".tag-text");
+            if (idx === index) {
+              icon.classList.remove("text-zinc-500", "group-hover:text-zinc-400");
+              icon.classList.add("text-purple-400");
+              text.classList.remove("text-zinc-400", "group-hover:text-zinc-300");
+              text.classList.add("text-white", "font-semibold");
+            } else {
+              icon.classList.remove("text-purple-400");
+              icon.classList.add("text-zinc-500", "group-hover:text-zinc-400");
+              text.classList.remove("text-white", "font-semibold");
+              text.classList.add("text-zinc-400", "group-hover:text-zinc-300");
+            }
+          });
+
+          tagLoadingText.textContent = tagData[index].loadingMsg;
+          tagLoading.classList.remove("opacity-0", "pointer-events-none");
+
+          setTimeout(() => {
+            tagGallery.innerHTML = tagData[index].images.map(item => `
+              <div class="relative rounded-xl overflow-hidden group/item mb-3 shadow-md bg-[#1f222e]">
+                <img src="${item.url}" class="w-full h-auto object-cover" alt="Result" />
+                <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover/item:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-3 pointer-events-none">
+                  <div class="flex flex-wrap gap-1">
+                    ${item.tags.map(t => `
+                      <span class="bg-purple-500/90 text-white text-[10px] font-medium px-1.5 py-0.5 rounded backdrop-blur-md shadow-sm border border-white/10">${t}</span>
+                    `).join('')}
+                  </div>
+                </div>
+              </div>
+            `).join('');
+
+            tagLoading.classList.add("opacity-0", "pointer-events-none");
+          }, 500);
+        }
+
+        tagTabs.forEach((btn) => {
+          btn.addEventListener("click", () => {
+            const idx = parseInt(btn.getAttribute("data-index"));
+            switchTagSystem(idx);
+          });
+        });
+
+        document.getElementById("tag-action-btn").addEventListener("click", () => {
+          const activeTab = Array.from(tagTabs).findIndex(b => b.querySelector(".tag-text").classList.contains("text-white"));
+          switchTagSystem(activeTab >= 0 ? activeTab : 0);
+        });
+
+        switchTagSystem(0);
+
+        const folderTreeData = [
+          {
+            id: "figma",
+            name: "Figma UI 组件库",
+            icon: "smart-folder",
+            rule: "匹配规则：格式为 .fig 且标签包含 'UI' 的本地素材",
+            count: 24,
+            previews: [
+              "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=80",
+              "https://images.unsplash.com/photo-1550745165-9bc0b252726f?q=80&w=80",
+              "https://images.unsplash.com/photo-1561070791-2526d30994b5?q=80&w=80"
+            ]
+          },
+          {
+            id: "package",
+            name: "包装设计样机",
+            icon: "folder",
+            rule: "归档规则：类型为 PSD 且大小大于 50MB 的包装设计素材",
+            count: 12,
+            previews: [
+              "https://images.unsplash.com/photo-1550439062-609e1531270e?q=80&w=80",
+              "https://images.unsplash.com/photo-1542282088-72c9c27ed0cd?q=80&w=80"
+            ]
+          },
+          {
+            id: "audio",
+            name: "游戏音效与配乐",
+            icon: "music",
+            rule: "筛选条件：音频格式为 .mp3 或 .wav 的高音质文件",
+            count: 8,
+            previews: [
+              "https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=80",
+              "https://images.unsplash.com/photo-1558655146-d09347e92766?q=80&w=80"
+            ]
+          }
+        ];
+
+        const folderTabs = document.querySelectorAll(".folder-tab");
+        const folderTabPill = document.getElementById("folder-tab-pill");
+        const folderTreeContainer = document.getElementById("folder-tree-container");
+        const detailFolderName = document.getElementById("detail-folder-name");
+        const detailFolderDesc = document.getElementById("detail-folder-desc");
+        const detailPreviews = document.getElementById("detail-previews");
+        const folderTopBarText = document.getElementById("folder-top-bar-text");
+
+        function switchFolderCategory(index) {
+          folderTabPill.style.transform = `translateY(${index * 48}px)`;
+
+          folderTabs.forEach((btn, idx) => {
+            const icon = btn.querySelector(".folder-icon");
+            const text = btn.querySelector(".folder-text");
+            if (idx === index) {
+              icon.classList.remove("text-zinc-500", "group-hover:text-zinc-400");
+              icon.classList.add("text-emerald-400");
+              text.classList.remove("text-zinc-400", "group-hover:text-zinc-300");
+              text.classList.add("text-white", "font-semibold");
+            } else {
+              icon.classList.remove("text-emerald-400");
+              icon.classList.add("text-zinc-500", "group-hover:text-zinc-400");
+              text.classList.remove("text-white", "font-semibold");
+              text.classList.add("text-zinc-400", "group-hover:text-zinc-300");
+            }
+          });
+
+          renderTreeMenu();
+        }
+
+        function renderTreeMenu() {
+          folderTreeContainer.innerHTML = folderTreeData.map((folder, idx) => `
+            <div
+              class="tree-node flex items-center justify-between px-3 py-2 rounded-lg cursor-pointer transition-colors duration-200 ${idx === 0 ? 'bg-emerald-500/10 text-emerald-400' : 'hover:bg-white/5 text-zinc-400'}"
+              data-id="${folder.id}"
+            >
+              <div class="flex items-center gap-2">
+                <i data-lucide="${folder.icon === 'smart-folder' ? 'folder-git' : (folder.icon === 'music' ? 'music-4' : 'folder-closed')}" class="w-4 h-4"></i>
+                <span class="text-xs font-medium tracking-wide">${folder.name}</span>
+              </div>
+              <span class="text-[10px] bg-white/5 border border-white/5 px-1.5 py-0.5 rounded text-zinc-500">${folder.count}</span>
+            </div>
+          `).join('');
+
+          lucide.createIcons({
+            attrs: {
+              class: "w-4 h-4"
+            }
+          });
+
+          document.querySelectorAll(".tree-node").forEach((node) => {
+            node.addEventListener("click", () => {
+              document.querySelectorAll(".tree-node").forEach(n => {
+                n.className = "tree-node flex items-center justify-between px-3 py-2 rounded-lg cursor-pointer transition-colors duration-200 hover:bg-white/5 text-zinc-400";
+              });
+              node.className = "tree-node flex items-center justify-between px-3 py-2 rounded-lg cursor-pointer transition-colors duration-200 bg-emerald-500/10 text-emerald-400";
+
+              const id = node.getAttribute("data-id");
+              const currentFolder = folderTreeData.find(f => f.id === id);
+              if (currentFolder) {
+                detailFolderName.textContent = currentFolder.name;
+                detailFolderDesc.textContent = currentFolder.rule;
+                folderTopBarText.textContent = currentFolder.name;
+
+                detailPreviews.innerHTML = currentFolder.previews.map(url => `
+                  <div class="w-10 h-10 rounded bg-zinc-800 border border-white/10 overflow-hidden shadow-md transform hover:scale-110 transition-transform duration-300">
+                    <img src="${url}" class="w-full h-full object-cover">
+                  </div>
+                `).join('');
+              }
+            });
+          });
+        }
+
+        folderTabs.forEach((btn) => {
+          btn.addEventListener("click", () => {
+            const idx = parseInt(btn.getAttribute("data-index"));
+            switchFolderCategory(idx);
+          });
+        });
+
+        switchFolderCategory(0);
+      });
+    </script>
+  
+</body></html>
